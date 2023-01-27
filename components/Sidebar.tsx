@@ -10,7 +10,14 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Sidebar({ links }: { links: any[] }) {
+type Link = { name: string; href: string; id: string }
+type Category = {
+  name: string
+  id: string
+  links: Link[]
+}
+
+export default function Sidebar({ links }: { links: Category[] }) {
   const searchParams = useSearchParams()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const categoryId = searchParams.get("category")
@@ -70,30 +77,24 @@ export default function Sidebar({ links }: { links: any[] }) {
                 </Transition.Child>
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <nav className="mt-5 space-y-1 px-2">
-                    <Link
-                      href={`/default/github/supabase/supabase`}
-                      className={classNames(
-                        !categoryId
-                          ? "bg-gray-100 text-gray-900"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
-                      )}
-                    >
-                      All
-                    </Link>
-                    {links?.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={item.href}
-                        className={classNames(
-                          categoryId === item.id
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                          "group flex items-center px-2 py-2 text-base font-medium rounded-md"
-                        )}
-                      >
-                        {item.name}
-                      </Link>
+                    {links?.map((category) => (
+                      <div key={category.id}>
+                        <p>{category.name}</p>
+                        {category.links.map((link) => (
+                          <Link
+                            key={link.id}
+                            href={link.href}
+                            className={classNames(
+                              categoryId === category.id
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                              "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                            )}
+                          >
+                            {link.name}
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </nav>
                 </div>
@@ -119,39 +120,24 @@ export default function Sidebar({ links }: { links: any[] }) {
               />
             </div> */}
             <nav className="mt-5 flex-1 space-y-1 bg-white px-2">
-              <Link
-                href={`/default/github/supabase/supabase`}
-                className={classNames(
-                  !categoryId
-                    ? "bg-gray-100 text-gray-900"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                  "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-                )}
-              >
-                All
-              </Link>
-              {links?.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    categoryId === item.id
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                    "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
-                  )}
-                >
-                  {/* <item.icon
-                    className={classNames(
-                      item.current
-                        ? "text-gray-500"
-                        : "text-gray-400 group-hover:text-gray-500",
-                      "mr-3 flex-shrink-0 h-6 w-6"
-                    )}
-                    aria-hidden="true"
-                  /> */}
-                  {item.nameTranslation}
-                </Link>
+              {links?.map((category) => (
+                <div key={category.id}>
+                  <p>{category.name}</p>
+                  {category.links.map((link) => (
+                    <Link
+                      key={link.id}
+                      href={link.href}
+                      className={classNames(
+                        categoryId === category.id
+                          ? "bg-gray-100 text-gray-900"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                      )}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
               ))}
             </nav>
           </div>
