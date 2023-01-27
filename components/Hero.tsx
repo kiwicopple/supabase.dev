@@ -12,6 +12,16 @@ export default function Hero() {
         Do you want help build Supabase? We've built all the tools you need to
         become an open source contributor.
       </p>
+      <p className="my-4 font-normal text-gray-800 dark:text-gray-400">
+        Contribute to supabase.dev:{" "}
+        <a
+          href="https://github.com/supabase/supabase.dev"
+          className="text-blue-500"
+          target={"_blank"}
+        >
+          github.com/supabase/supabase.dev
+        </a>
+      </p>
       <h2 className="text-3xl font-extrabold dark:text-white">
         Getting started
       </h2>
