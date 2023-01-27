@@ -22,6 +22,19 @@ export default function Hero() {
         </Link>{" "}
         to familiarise yourself with Supabase.
       </p>
+      <h2 className="text-3xl font-extrabold dark:text-white">
+        Code of Conduct
+      </h2>
+      <p className="my-4 font-normal text-gray-800 dark:text-gray-400">
+        Read our{" "}
+        <Link
+          href="https://github.com/supabase/.github/blob/main/CODE_OF_CONDUCT.md"
+          className="text-blue-500"
+        >
+          Code of Conduct
+        </Link>
+        .
+      </p>
     </div>
   )
 }
