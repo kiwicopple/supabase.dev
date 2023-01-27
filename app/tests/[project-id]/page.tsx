@@ -10,12 +10,12 @@ export default async function Tests() {
   const { versions } = await getData()
 
   return (
-    <main>
+    <div className="p-4">
       {versions?.map((x) => (
         <div key={x.id}>
           <h2 className="text-lg">{x.version_name}</h2>
         </div>
       ))}
-    </main>
+    </div>
   )
 }
