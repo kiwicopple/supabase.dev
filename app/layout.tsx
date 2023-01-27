@@ -5,7 +5,7 @@ const links = [
   {
     id: "general",
     name: "General",
-    links: [{ id: "about", name: "About", href: "/" }],
+    links: [{ id: "getting-started", name: "Getting Started", href: "/" }],
   },
   {
     id: "tests",
