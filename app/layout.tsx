@@ -14,32 +14,32 @@ const links = [
       {
         id: "test-supabase-client",
         name: "Supabase Client",
-        href: "/test/supabase-client",
+        href: "/tests/supabase-client",
       },
       {
         id: "test-functions-client",
         name: "Functions Client",
-        href: "/test/functions-client",
+        href: "/tests/functions-client",
       },
       {
         id: "test-gotrue-client",
         name: "GoTrue Client",
-        href: "/test/gotrue-client",
+        href: "/tests/gotrue-client",
       },
       {
         id: "test-postgrest-client",
         name: "PostgREST Client",
-        href: "/test/postgrest-client",
+        href: "/tests/postgrest-client",
       },
       {
         id: "test-realtime-client",
         name: "Realtime Client",
-        href: "/test/realtime-client",
+        href: "/tests/realtime-client",
       },
       {
         id: "test-storage-client",
         name: "Storage Client",
-        href: "/test/storage-client",
+        href: "/tests/storage-client",
       },
     ],
   },

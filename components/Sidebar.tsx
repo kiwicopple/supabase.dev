@@ -77,25 +77,7 @@ export default function Sidebar({ links }: { links: Category[] }) {
                 </Transition.Child>
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <nav className="mt-5 space-y-1 px-2">
-                    {links?.map((category) => (
-                      <div key={category.id}>
-                        <p>{category.name}</p>
-                        {category.links.map((link) => (
-                          <Link
-                            key={link.id}
-                            href={link.href}
-                            className={classNames(
-                              categoryId === category.id
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                              "group flex items-center px-2 py-2 text-base font-medium rounded-md"
-                            )}
-                          >
-                            {link.name}
-                          </Link>
-                        ))}
-                      </div>
-                    ))}
+                    <LinkList links={links} />
                   </nav>
                 </div>
               </Dialog.Panel>
@@ -120,25 +102,7 @@ export default function Sidebar({ links }: { links: Category[] }) {
               />
             </div> */}
             <nav className="mt-5 flex-1 space-y-1 bg-white px-2">
-              {links?.map((category) => (
-                <div key={category.id}>
-                  <p>{category.name}</p>
-                  {category.links.map((link) => (
-                    <Link
-                      key={link.id}
-                      href={link.href}
-                      className={classNames(
-                        categoryId === category.id
-                          ? "bg-gray-100 text-gray-900"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
-                      )}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              ))}
+              <LinkList links={links} />
             </nav>
           </div>
         </div>
@@ -155,6 +119,34 @@ export default function Sidebar({ links }: { links: Category[] }) {
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
+    </>
+  )
+}
+
+const LinkList = ({ links }: { links: Category[] }) => {
+  return (
+    <>
+      {links?.map((category) => (
+        <div key={category.id} className={`py-2`}>
+          <p className="text-gray-400 uppercase text-sm font-bold px-2 pb-2">
+            {category.name}
+          </p>
+          {category.links.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              className={classNames(
+                false
+                  ? "bg-gray-100 text-gray-900"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      ))}
     </>
   )
 }
