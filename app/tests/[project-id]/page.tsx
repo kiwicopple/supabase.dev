@@ -12,7 +12,9 @@ export default async function Tests() {
   return (
     <main>
       {versions?.map((x) => (
-        <div key={x.id}>{x.version_name}</div>
+        <div key={x.id}>
+          <h2 className="text-lg">{x.version_name}</h2>
+        </div>
       ))}
     </main>
   )
