@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar"
 import "./globals.css"
+import "@tremor/react/dist/esm/tremor.css"
 
 const links = [
   {
