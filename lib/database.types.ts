@@ -33,133 +33,139 @@ export interface Database {
     Tables: {
       launches: {
         Row: {
+          created_at: string
+          duration: number | null
+          id: number
+          is_template: boolean
+          name: string
           origin: string | null
+          updated_at: string
           user_id: string
           version_id: number
-          duration: number | null
-          name: string
-          created_at: string
-          is_template: boolean
-          updated_at: string
-          id: number
         }
         Insert: {
+          created_at?: string
+          duration?: number | null
+          id?: number
+          is_template?: boolean
+          name: string
           origin?: string | null
+          updated_at?: string
           user_id: string
           version_id: number
-          duration?: number | null
-          name: string
-          created_at?: string
-          is_template?: boolean
-          updated_at?: string
-          id?: number
         }
         Update: {
+          created_at?: string
+          duration?: number | null
+          id?: number
+          is_template?: boolean
+          name?: string
           origin?: string | null
+          updated_at?: string
           user_id?: string
           version_id?: number
-          duration?: number | null
-          name?: string
-          created_at?: string
-          is_template?: boolean
-          updated_at?: string
-          id?: number
         }
       }
       projects: {
         Row: {
-          name: string
-          description: string | null
-          owner_id: string | null
           created_at: string | null
+          description: string | null
           id: number
+          key: string | null
+          name: string
+          owner_id: string | null
         }
         Insert: {
-          name: string
-          description?: string | null
-          owner_id?: string | null
           created_at?: string | null
+          description?: string | null
           id?: number
+          key?: string | null
+          name: string
+          owner_id?: string | null
         }
         Update: {
-          name?: string
-          description?: string | null
-          owner_id?: string | null
           created_at?: string | null
+          description?: string | null
           id?: number
+          key?: string | null
+          name?: string
+          owner_id?: string | null
         }
       }
       results: {
         Row: {
-          id: string
-          name: string
-          suite: string
-          feature: string
-          status: string | null
-          description: string | null
-          steps: Json | null
-          duration: number | null
-          fullname: string | null
-          launch_id: number
-          parent_suite: string | null
-          sub_suite: string | null
           created_at: string
+          description: string | null
+          duration: number | null
+          feature: string
+          fullname: string | null
+          id: string
+          labels: Json | null
+          launch_id: number
+          name: string
+          parent_suite: string | null
+          status: string | null
+          steps: Json | null
+          sub_suite: string | null
+          suite: string
         }
         Insert: {
-          id: string
-          name: string
-          suite: string
-          feature: string
-          status?: string | null
-          description?: string | null
-          steps?: Json | null
-          duration?: number | null
-          fullname?: string | null
-          launch_id: number
-          parent_suite?: string | null
-          sub_suite?: string | null
           created_at?: string
+          description?: string | null
+          duration?: number | null
+          feature: string
+          fullname?: string | null
+          id: string
+          labels?: Json | null
+          launch_id: number
+          name: string
+          parent_suite?: string | null
+          status?: string | null
+          steps?: Json | null
+          sub_suite?: string | null
+          suite: string
         }
         Update: {
-          id?: string
-          name?: string
-          suite?: string
-          feature?: string
-          status?: string | null
-          description?: string | null
-          steps?: Json | null
-          duration?: number | null
-          fullname?: string | null
-          launch_id?: number
-          parent_suite?: string | null
-          sub_suite?: string | null
           created_at?: string
+          description?: string | null
+          duration?: number | null
+          feature?: string
+          fullname?: string | null
+          id?: string
+          labels?: Json | null
+          launch_id?: number
+          name?: string
+          parent_suite?: string | null
+          status?: string | null
+          steps?: Json | null
+          sub_suite?: string | null
+          suite?: string
         }
       }
       versions: {
         Row: {
-          version_name: string
-          repo: string
-          project_id: number
           created_at: string
-          secondary_id: string | null
           id: number
+          project_id: number
+          repo: string
+          secondary_id: string | null
+          version_name: string
         }
         Insert: {
-          version_name: string
-          repo: string
-          project_id: number
           created_at?: string
-          secondary_id?: string | null
           id?: number
+          project_id: number
+          repo: string
+          secondary_id?: string | null
+          version_name: string
         }
         Update: {
-          version_name?: string
-          repo?: string
-          project_id?: number
           created_at?: string
-          secondary_id?: string | null
           id?: number
+          project_id?: number
+          repo?: string
+          secondary_id?: string | null
+          version_name?: string
         }
       }
     }
@@ -192,83 +198,83 @@ export interface Database {
     Tables: {
       buckets: {
         Row: {
+          created_at: string | null
           id: string
           name: string
           owner: string | null
-          created_at: string | null
-          updated_at: string | null
           public: boolean | null
+          updated_at: string | null
         }
         Insert: {
+          created_at?: string | null
           id: string
           name: string
           owner?: string | null
-          created_at?: string | null
-          updated_at?: string | null
           public?: boolean | null
+          updated_at?: string | null
         }
         Update: {
+          created_at?: string | null
           id?: string
           name?: string
           owner?: string | null
-          created_at?: string | null
-          updated_at?: string | null
           public?: boolean | null
+          updated_at?: string | null
         }
       }
       migrations: {
         Row: {
+          executed_at: string | null
+          hash: string
           id: number
           name: string
-          hash: string
-          executed_at: string | null
         }
         Insert: {
+          executed_at?: string | null
+          hash: string
           id: number
           name: string
-          hash: string
-          executed_at?: string | null
         }
         Update: {
+          executed_at?: string | null
+          hash?: string
           id?: number
           name?: string
-          hash?: string
-          executed_at?: string | null
         }
       }
       objects: {
         Row: {
           bucket_id: string | null
+          created_at: string | null
+          id: string
+          last_accessed_at: string | null
+          metadata: Json | null
           name: string | null
           owner: string | null
-          metadata: Json | null
-          id: string
-          created_at: string | null
-          updated_at: string | null
-          last_accessed_at: string | null
           path_tokens: string[] | null
+          updated_at: string | null
         }
         Insert: {
           bucket_id?: string | null
+          created_at?: string | null
+          id?: string
+          last_accessed_at?: string | null
+          metadata?: Json | null
           name?: string | null
           owner?: string | null
-          metadata?: Json | null
-          id?: string
-          created_at?: string | null
-          updated_at?: string | null
-          last_accessed_at?: string | null
           path_tokens?: string[] | null
+          updated_at?: string | null
         }
         Update: {
           bucket_id?: string | null
+          created_at?: string | null
+          id?: string
+          last_accessed_at?: string | null
+          metadata?: Json | null
           name?: string | null
           owner?: string | null
-          metadata?: Json | null
-          id?: string
-          created_at?: string | null
-          updated_at?: string | null
-          last_accessed_at?: string | null
           path_tokens?: string[] | null
+          updated_at?: string | null
         }
       }
     }
@@ -318,4 +324,3 @@ export interface Database {
     }
   }
 }
-
