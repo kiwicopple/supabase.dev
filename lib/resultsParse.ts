@@ -57,7 +57,6 @@ export function groupResultsByFeature(results: Result[]): GroupedResults[] {
           groupedResults.passed["other"].push(result)
         }
         break
-      case "broken":
       case "failed":
         if (features.includes(result.feature)) {
           groupedResults.failed[result.feature].push(result)
@@ -86,6 +85,7 @@ export function groupResultsByFeature(results: Result[]): GroupedResults[] {
           groupedResults.skipped["other"].push(result)
         }
         break
+      case "broken":
       default:
         if (features.includes(result.feature)) {
           groupedResults.undefined[result.feature].push(result)

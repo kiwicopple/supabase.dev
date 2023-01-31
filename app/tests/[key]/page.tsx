@@ -6,13 +6,13 @@ import { useState, useEffect } from "react"
 import {
   Card,
   ColGrid,
-  Text,
   Title,
   Badge,
   Flex,
   Block,
   BarChart,
   CategoryBar,
+  Legend,
 } from "@tremor/react"
 import { HashtagIcon } from "@heroicons/react/20/solid"
 
@@ -25,7 +25,6 @@ interface VersionWithResults extends Version {
 }
 
 async function getData({ key }: { key: string }) {
-  // const { data } = await supabase.from("versions").select("*")
   const { data } = await supabase.rpc("version")
 
   if (!data) {
@@ -66,9 +65,7 @@ export default function Tests({ params }: { params: { key: string } }) {
             <Flex alignItems="items-start">
               <Block>
                 <Title>{x.version_name}</Title>
-                {/* <Metric># {x.results_number ?? 0}</Metric> */}
               </Block>
-              {/* badge with id number and id hero icon */}
               <Badge
                 tooltip="Version ID"
                 icon={HashtagIcon}
@@ -96,15 +93,27 @@ export default function Tests({ params }: { params: { key: string } }) {
               colors={["emerald", "rose", "yellow", "indigo"]}
               showLabels={false}
             />
-            <BarChart
-              marginTop="mt-6"
-              data={groupResultsByFeature(x.results || []) ?? []}
-              categories={["passed", "failed", "skipped", "undefined"]}
+            <Legend
+              categories={[
+                x.passed_number?.toString() ?? "0",
+                x.failed_number?.toString() ?? "0",
+                x.skipped_number?.toString() ?? "0",
+                x.undefined_number?.toString() ?? "0",
+              ]}
               colors={["emerald", "rose", "yellow", "indigo"]}
-              dataKey="feature"
-              layout="horizontal"
-              stack={true}
+              marginTop="mt-3"
             />
+            <Flex alignItems="items-start">
+              <BarChart
+                marginTop="mt-6"
+                data={groupResultsByFeature(x.results || []) ?? []}
+                categories={["passed", "failed", "skipped", "undefined"]}
+                colors={["emerald", "rose", "yellow", "indigo"]}
+                dataKey="feature"
+                layout="horizontal"
+                stack={true}
+              />
+            </Flex>
           </Card>
         ))}
       </ColGrid>

@@ -18,7 +18,7 @@ const links = [
       {
         id: "test-supabase-client",
         name: "Supabase Client",
-        href: "/tests/1",
+        href: "/tests/supabase-client",
       },
       // {
       //   id: "test-functions-client",
