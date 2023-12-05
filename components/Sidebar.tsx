@@ -20,7 +20,7 @@ type Category = {
 export default function Sidebar({ links }: { links: Category[] }) {
   const searchParams = useSearchParams()
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const categoryId = searchParams.get("category")
+  const categoryId = searchParams?.get("category")
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
